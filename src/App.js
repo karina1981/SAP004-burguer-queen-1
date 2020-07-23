@@ -1,27 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Background from './components/Background/Background.js';
+import Button from './components/Button/Button.js';
+import Logo from './components/Logo/Logo.js';
+import './style.css';
 // import firebase from './firebase';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Background />
+      <div>
+        <div>
+          <Logo />
+        </div>
+        <section>
+          <p className="welcome">Bem vindo CK Lover!</p>
+          <p className="login">
+            Entre com seu email e senha em Login ou
+            <br />
+            Registre um novo usuário!
+          </p>
+          <p className="trouble">
+            Problemas com seu login?
+            <br />
+            Clique aqui!
+          </p>
+        </section>
+
+        <div>
+          <Button name="Login" className="login" />
+          <Button name="Registro" className="registro" />
+        </div>
+      </div>
+    </main>
   );
-}
+};
 
 export default App;
