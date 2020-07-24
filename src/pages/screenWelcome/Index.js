@@ -4,7 +4,7 @@ import logo from './imagens/logo.png';
 import './style.css';
 // import firebase from './firebase';
 
-const App = () => {
+const Index = () => {
   return (
     <main>
       <Background
@@ -28,4 +28,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Index;
