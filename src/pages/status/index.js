@@ -141,6 +141,7 @@ const Index = function (props) {
           )
 
           if (request.status !== 'ENTREGUE') {
+            console.log(request)
             requests.push(request)
           }
         })
@@ -158,7 +159,7 @@ const Index = function (props) {
   const renderProduct = (product, index) => {
     return (
       <li key={index}>
-        {product.qtd} {product.name}
+        {product.qtd} {product.name} {product.item_selected}
       </li>
     )
   }
@@ -176,12 +177,12 @@ const Index = function (props) {
 
   const renderRequest = (request, index) => {
     // request.status = 'FEITO'
-    const className =
-      request.status === 'A FAZER'
-        ? 'request_card pending'
-        : request.status === 'FEITO'
-        ? 'request_card done'
-        : 'request_card making'
+    //const classNameCard =
+    //  request.status === 'A FAZER'
+    //    ? 'request_card pending'
+    //    : request.status === 'FEITO'
+    //    ? 'request_card done'
+    //    : 'request_card making'
 
     return (
       <Grid item xs={12} md={6}>
@@ -266,11 +267,7 @@ const Index = function (props) {
             </Grid>
           </Grid>
           <Grid container alignItems="center" justify="center">
-            {requests.length === 0 ? (
-              <h1>Não existe pedidos pendentes</h1>
-            ) : (
-              requests.map(renderRequest)
-            )}
+            {requests.map(renderRequest)}
           </Grid>
         </Paper>
       </Grid>

@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
-import AlarmIcon from '@material-ui/icons/Alarm'
 import Typography from '@material-ui/core/Typography'
 
 import Card from '@material-ui/core/Card'
@@ -172,12 +171,12 @@ const Index = function (props) {
 
   const renderRequest = (request, index) => {
     // request.status = 'FEITO'
-    const className =
-      request.status === 'A FAZER'
-        ? 'request_card pending'
-        : request.status === 'FEITO'
-        ? 'request_card done'
-        : 'request_card making'
+    // const className =
+    //   request.status === 'A FAZER'
+    //     ? 'request_card pending'
+    //     : request.status === 'FEITO'
+    //     ? 'request_card done'
+    //     : 'request_card making'
 
     return (
       <Grid item xs={12} md={6}>
@@ -253,11 +252,7 @@ const Index = function (props) {
             </Grid>
           </Grid>
           <Grid container alignItems="center" justify="center">
-            {requests.length === 0 ? (
-              <h1>Não existe pedidos pendentes</h1>
-            ) : (
-              requests.map(renderRequest)
-            )}
+            {requests.map(renderRequest)}
           </Grid>
         </Paper>
       </Grid>

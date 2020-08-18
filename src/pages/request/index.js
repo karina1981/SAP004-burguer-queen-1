@@ -195,6 +195,7 @@ const Index = function (props) {
       status: 'A FAZER', // PREPARANDO, FEITO, ENTREGUE
       date: '',
     })
+    setTotal(0)
     setName('')
     setTable('')
   }
@@ -203,6 +204,7 @@ const Index = function (props) {
     firebase
       .firestore()
       .collection('menu')
+      .orderBy('name', 'desc')
       .get()
       .then((docs) => {
         const products = {
@@ -216,11 +218,17 @@ const Index = function (props) {
             products.breakfast.push({
               name: productFirebase.name,
               price: parseFloat(productFirebase.price),
+              type_itens: productFirebase.type_itens
+                ? productFirebase.type_itens
+                : [],
             })
           } else {
             products.lunch.push({
               name: productFirebase.name,
               price: parseFloat(productFirebase.price),
+              type_itens: productFirebase.type_itens
+                ? productFirebase.type_itens
+                : [],
             })
           }
         })
@@ -239,19 +247,13 @@ const Index = function (props) {
     let totalPrice = 0
     const product = products[categorySelected][index]
 
-    const productIndex = request.products.findIndex((element) => {
-      return element.name === product.name ? true : false
+    request.products.push({
+      name: product.name,
+      price: product.price,
+      qtd: 1,
+      productIndex: index,
+      categorySelected,
     })
-
-    if (request.products[productIndex]) {
-      request.products[productIndex].qtd++
-    } else {
-      request.products.push({
-        name: product.name,
-        price: product.price,
-        qtd: 1,
-      })
-    }
 
     totalPrice = total + product.price
 
@@ -291,16 +293,48 @@ const Index = function (props) {
     setError('')
   }
 
-  const renderRequest = (product, index) => {
+  const changeSelectItemProduct = (e, indexRequest) => {
+    request.products[indexRequest].indexSelected = e.target.value
+    console.log(request)
+    setRequest(request)
+  }
+
+  const renderTypeItens = (product, indexRequest) => {
+    const requestProduct = request.products[indexRequest]
+    return (
+      <>
+        <select onChange={(e) => changeSelectItemProduct(e, indexRequest)}>
+          {product.type_itens.map((item, indexItem) => {
+            if (requestProduct.indexSelected === indexItem) {
+              return (
+                <option value={indexItem} selected>
+                  {item}
+                </option>
+              )
+            }
+            return <option value={indexItem}>{item}</option>
+          })}
+        </select>
+      </>
+    )
+  }
+
+  const renderRequest = (productRequest, index) => {
+    const product =
+      products[productRequest.categorySelected][productRequest.productIndex]
+    //console.log(product, products, productRequest.productIndex)
+    //return
     return (
       <li>
+        <span>{product.name}</span>
+
         <span>
-          {product.qtd} x {product.name}
+          {product.type_itens.length ? renderTypeItens(product, index) : ''}
         </span>
 
-        <span>R$ {product.price.toFixed(2)}</span>
+        <span> R$ {product.price.toFixed(2)}</span>
 
-        <section onClick={() => removeProductRequest(index)}>Remover</section>
+        <section onClick={() => removeProductRequest(index)}> Remover</section>
       </li>
     )
   }
@@ -339,6 +373,20 @@ const Index = function (props) {
     }
 
     request.start_date = new Date()
+    request.products = request.products.map((productRequest) => {
+      const product =
+        products[productRequest.categorySelected][productRequest.productIndex]
+      return {
+        ...productRequest,
+        item_selected: product.type_itens.length
+          ? product.type_itens[
+              productRequest.indexSelected === undefined
+                ? 0
+                : productRequest.indexSelected
+            ]
+          : '',
+      }
+    })
     request.end_date = null
     request.table = table
     request.total = total
