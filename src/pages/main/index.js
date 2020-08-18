@@ -134,9 +134,9 @@ const Index = function (props) {
 
                 login(resultToken.token, JSON.stringify(currentUser))
 
-                if (currentUser.sector === 'salao') {
+                if (currentUser.sector === 'atendente') {
                   props.history.push('/request')
-                } else if (currentUser.sector === 'admin') {
+                } else if (currentUser.sector === 'adm') {
                   props.history.push('/admin')
                 } else {
                   props.history.push('/kitchen')

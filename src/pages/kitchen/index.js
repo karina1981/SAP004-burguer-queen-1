@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Typography from '@material-ui/core/Typography'
 
 import Card from '@material-ui/core/Card'
@@ -16,6 +17,8 @@ import CardContent from '@material-ui/core/CardContent'
 import firebase from '../../firebase'
 import './style.css'
 import moment from 'moment'
+
+import { logout } from '../../services/auth'
 
 const useStyles = makeStyles((theme) => ({
   headerTopLef: {
@@ -166,7 +169,12 @@ const Index = function (props) {
 
   const handleChangeNavigation = (event, newValue) => {
     setValueNavigation(newValue)
-    props.history.push('/kitchen')
+    if (newValue === 'exit') {
+      logout()
+      props.history.push('/')
+    } else {
+      props.history.push('/kitchen')
+    }
   }
 
   const renderRequest = (request, index) => {
@@ -239,6 +247,12 @@ const Index = function (props) {
                   value="kitchen"
                   showLabel
                   icon={<AssignmentIcon />}
+                />
+                <BottomNavigationAction
+                  label="SAIR"
+                  value="exit"
+                  showLabel
+                  icon={<ExitToAppIcon />}
                 />
               </BottomNavigation>
             </Grid>

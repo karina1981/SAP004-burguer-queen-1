@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 
 import TextField from '@material-ui/core/TextField'
 
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
@@ -27,6 +29,8 @@ import ListItem from '@material-ui/core/ListItem'
 
 import firebase from '../../firebase'
 import './style.css'
+
+import { logout } from '../../services/auth'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -171,7 +175,10 @@ const Index = function (props) {
 
   const handleChangeNavigation = (event, newValue) => {
     setValueNavigation(newValue)
-    if (newValue !== 'requests') {
+    if (newValue === 'exit') {
+      logout()
+      props.history.push('/')
+    } else if (newValue !== 'requests') {
       props.history.push('/status')
     } else {
       props.history.push('/request')
@@ -431,6 +438,13 @@ const Index = function (props) {
                   value="preparation"
                   showLabel
                   icon={<AlarmIcon />}
+                />
+
+                <BottomNavigationAction
+                  label="SAIR"
+                  value="exit"
+                  showLabel
+                  icon={<ExitToAppIcon />}
                 />
               </BottomNavigation>
             </Grid>

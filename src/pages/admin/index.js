@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
 
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import Typography from '@material-ui/core/Typography'
+
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -16,6 +17,8 @@ import CardContent from '@material-ui/core/CardContent'
 import firebase from '../../firebase'
 import './style.css'
 import moment from 'moment'
+
+import { logout } from '../../services/auth'
 
 const useStyles = makeStyles((theme) => ({
   headerTopLef: {
@@ -154,7 +157,12 @@ const Index = function (props) {
 
   const handleChangeNavigation = (event, newValue) => {
     setValueNavigation(newValue)
-    props.history.push('/admin')
+    if (newValue === 'exit') {
+      logout()
+      props.history.push('/')
+    } else {
+      props.history.push('/admin')
+    }
   }
 
   const renderRequest = (request, index) => {
@@ -180,6 +188,8 @@ const Index = function (props) {
                     .asMinutes()
                     .toFixed(0)}{' '}
                   Minutos
+                  <br />
+                  Valor total: R$ {request.total ? request.total.toFixed(2) : 0}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
@@ -215,6 +225,13 @@ const Index = function (props) {
                   value="admin"
                   showLabel
                   icon={<AssignmentIcon />}
+                />
+
+                <BottomNavigationAction
+                  label="SAIR"
+                  value="exit"
+                  showLabel
+                  icon={<ExitToAppIcon />}
                 />
               </BottomNavigation>
             </Grid>
