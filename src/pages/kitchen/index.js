@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
-import AlarmIcon from '@material-ui/icons/Alarm'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Typography from '@material-ui/core/Typography'
 
 import Card from '@material-ui/core/Card'
@@ -17,6 +17,8 @@ import CardContent from '@material-ui/core/CardContent'
 import firebase from '../../firebase'
 import './style.css'
 import moment from 'moment'
+
+import { logout } from '../../services/auth'
 
 const useStyles = makeStyles((theme) => ({
   headerTopLef: {
@@ -158,7 +160,7 @@ const Index = function (props) {
   const renderProduct = (product, index) => {
     return (
       <li key={index}>
-        {product.qtd} {product.name}
+        {product.qtd} {product.name} {product.item_selected}
       </li>
     )
   }
@@ -167,18 +169,15 @@ const Index = function (props) {
 
   const handleChangeNavigation = (event, newValue) => {
     setValueNavigation(newValue)
-    props.history.push('/kitchen')
+    if (newValue === 'exit') {
+      logout()
+      props.history.push('/')
+    } else {
+      props.history.push('/kitchen')
+    }
   }
 
   const renderRequest = (request, index) => {
-    // request.status = 'FEITO'
-    const className =
-      request.status === 'A FAZER'
-        ? 'request_card pending'
-        : request.status === 'FEITO'
-        ? 'request_card done'
-        : 'request_card making'
-
     return (
       <Grid item xs={12} md={6}>
         <Card variant="outlined" className={classes.margin}>
@@ -249,15 +248,17 @@ const Index = function (props) {
                   showLabel
                   icon={<AssignmentIcon />}
                 />
+                <BottomNavigationAction
+                  label="SAIR"
+                  value="exit"
+                  showLabel
+                  icon={<ExitToAppIcon />}
+                />
               </BottomNavigation>
             </Grid>
           </Grid>
           <Grid container alignItems="center" justify="center">
-            {requests.length === 0 ? (
-              <h1>Não existe pedidos pendentes</h1>
-            ) : (
-              requests.map(renderRequest)
-            )}
+            {requests.map(renderRequest)}
           </Grid>
         </Paper>
       </Grid>

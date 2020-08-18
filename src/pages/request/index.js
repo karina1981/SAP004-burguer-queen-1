@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
-// import Input from '@material-ui/core/Input'
-// import InputLabel from '@material-ui/core/InputLabel'
 import TextField from '@material-ui/core/TextField'
+
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -19,21 +19,18 @@ import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import RestaurantIcon from '@material-ui/icons/Restaurant'
-// import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
-// import ThumbDown from '@material-ui/icons/ThumbDown'
-// import ThumbUp from '@material-ui/icons/ThumbUp'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 
-// import List from '@material-ui/core/List'
-// import ListItem from '@material-ui/core/ListItem'
-// import Divider from '@material-ui/core/Divider'
-// import ListItemText from '@material-ui/core/ListItemText'
-// import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-// import Avatar from '@material-ui/core/Avatar'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
 import firebase from '../../firebase'
 import './style.css'
+
+import { logout } from '../../services/auth'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -119,6 +116,9 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     //fontSize: '1em',
   },
+  cursor: {
+    cursor: 'pointer',
+  },
   relative: {
     position: 'relative',
   },
@@ -175,7 +175,10 @@ const Index = function (props) {
 
   const handleChangeNavigation = (event, newValue) => {
     setValueNavigation(newValue)
-    if (newValue !== 'requests') {
+    if (newValue === 'exit') {
+      logout()
+      props.history.push('/')
+    } else if (newValue !== 'requests') {
       props.history.push('/status')
     } else {
       props.history.push('/request')
@@ -195,6 +198,7 @@ const Index = function (props) {
       status: 'A FAZER', // PREPARANDO, FEITO, ENTREGUE
       date: '',
     })
+    setTotal(0)
     setName('')
     setTable('')
   }
@@ -203,6 +207,7 @@ const Index = function (props) {
     firebase
       .firestore()
       .collection('menu')
+      .orderBy('name', 'desc')
       .get()
       .then((docs) => {
         const products = {
@@ -216,11 +221,17 @@ const Index = function (props) {
             products.breakfast.push({
               name: productFirebase.name,
               price: parseFloat(productFirebase.price),
+              type_itens: productFirebase.type_itens
+                ? productFirebase.type_itens
+                : [],
             })
           } else {
             products.lunch.push({
               name: productFirebase.name,
               price: parseFloat(productFirebase.price),
+              type_itens: productFirebase.type_itens
+                ? productFirebase.type_itens
+                : [],
             })
           }
         })
@@ -239,19 +250,13 @@ const Index = function (props) {
     let totalPrice = 0
     const product = products[categorySelected][index]
 
-    const productIndex = request.products.findIndex((element) => {
-      return element.name === product.name ? true : false
+    request.products.push({
+      name: product.name,
+      price: product.price,
+      qtd: 1,
+      productIndex: index,
+      categorySelected,
     })
-
-    if (request.products[productIndex]) {
-      request.products[productIndex].qtd++
-    } else {
-      request.products.push({
-        name: product.name,
-        price: product.price,
-        qtd: 1,
-      })
-    }
 
     totalPrice = total + product.price
 
@@ -272,7 +277,6 @@ const Index = function (props) {
         </Grid>
       </>
     )
-    // <Divider variant="fullWidth" component="li" />
   }
 
   const removeProductRequest = (index) => {
@@ -291,17 +295,56 @@ const Index = function (props) {
     setError('')
   }
 
-  const renderRequest = (product, index) => {
+  const changeSelectItemProduct = (e, indexRequest) => {
+    request.products[indexRequest].indexSelected = e.target.value
+    console.log(request)
+    setRequest(request)
+  }
+
+  const renderTypeItens = (product, indexRequest) => {
+    const requestProduct = request.products[indexRequest]
     return (
-      <li>
+      <>
+        <select onChange={(e) => changeSelectItemProduct(e, indexRequest)}>
+          {product.type_itens.map((item, indexItem) => {
+            if (requestProduct.indexSelected === indexItem) {
+              return (
+                <option value={indexItem} selected>
+                  {item}
+                </option>
+              )
+            }
+            return <option value={indexItem}>{item}</option>
+          })}
+        </select>
+      </>
+    )
+  }
+
+  const renderRequest = (productRequest, index) => {
+    const product =
+      products[productRequest.categorySelected][productRequest.productIndex]
+    return (
+      <ListItem>
+        <span>{product.name} </span>
+
         <span>
-          {product.qtd} x {product.name}
+          &nbsp;
+          {product.type_itens.length
+            ? renderTypeItens(product, index)
+            : ''}{' '}
         </span>
 
-        <span>R$ {product.price.toFixed(2)}</span>
+        <span>&nbsp; R$ {product.price.toFixed(2)}</span>
 
-        <section onClick={() => removeProductRequest(index)}>Remover</section>
-      </li>
+        <span
+          className={classes.cursor}
+          onClick={() => removeProductRequest(index)}
+        >
+          {' '}
+          <DeleteForeverIcon />
+        </span>
+      </ListItem>
     )
   }
 
@@ -339,6 +382,20 @@ const Index = function (props) {
     }
 
     request.start_date = new Date()
+    request.products = request.products.map((productRequest) => {
+      const product =
+        products[productRequest.categorySelected][productRequest.productIndex]
+      return {
+        ...productRequest,
+        item_selected: product.type_itens.length
+          ? product.type_itens[
+              productRequest.indexSelected === undefined
+                ? 0
+                : productRequest.indexSelected
+            ]
+          : '',
+      }
+    })
     request.end_date = null
     request.table = table
     request.total = total
@@ -381,6 +438,13 @@ const Index = function (props) {
                   value="preparation"
                   showLabel
                   icon={<AlarmIcon />}
+                />
+
+                <BottomNavigationAction
+                  label="SAIR"
+                  value="exit"
+                  showLabel
+                  icon={<ExitToAppIcon />}
                 />
               </BottomNavigation>
             </Grid>
@@ -482,9 +546,7 @@ const Index = function (props) {
                         {table && <span> Mesa: {table}</span>}{' '}
                       </Typography>
 
-                      <ul className="ul_request" key="request">
-                        {request.products.map(renderRequest)}
-                      </ul>
+                      <List>{request.products.map(renderRequest)}</List>
 
                       <div className="total">Total: R$ {total.toFixed(2)}</div>
                     </Paper>

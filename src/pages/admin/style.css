@@ -1,0 +1,54 @@
+main {
+  display: flex;
+}
+
+main div.header img {
+  width: 200px;
+}
+
+.h1 {
+  display: grid;
+  grid-row: 2;
+  color: #1ffe5d;
+  font-size: 100%;
+  justify-content: center;
+}
+
+.pending {
+  background: #eec5a1;
+  margin: 2%;
+}
+.request_card {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  border-radius: 18%;
+}
+
+.request_card_P {
+  flex-wrap: wrap;
+  color: black;
+  font-size: 19px;
+  width: 18em;
+  height: 20em;
+  min-height: 25%;
+  margin: 10px;
+  padding: 1em 1em 2em 2em;
+}
+
+.status {
+  color: red;
+}
+
+.description {
+  background-color: blanchedalmond;
+  margin: 2%;
+}
+
+.making {
+  background-color: rgba(241, 241, 116, 0.973);
+}
+
+.done {
+  background-color: rgb(161, 190, 154);
+}

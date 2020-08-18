@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
 
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
-import AlarmIcon from '@material-ui/icons/Alarm'
 import Typography from '@material-ui/core/Typography'
+
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import Card from '@material-ui/core/Card'
@@ -107,16 +106,6 @@ const Index = function (props) {
   const classes = useStyles()
   const [requests, setRequests] = useState([])
 
-  const changeOrderDeliver = async (index) => {
-    const requestId = requests[index].id
-
-    await firebase.firestore().collection('request').doc(requestId).update({
-      status: 'ENTREGUE',
-    })
-
-    loadRequests()
-  }
-
   const loadRequests = () => {
     firebase
       .firestore()
@@ -143,10 +132,7 @@ const Index = function (props) {
               : moment(moment()).diff(request.start_date.toDate()),
           )
 
-          if (request.status !== 'ENTREGUE') {
-            console.log(request)
-            requests.push(request)
-          }
+          requests.push(request)
         })
 
         setRequests(requests)
@@ -167,17 +153,15 @@ const Index = function (props) {
     )
   }
 
-  const [valueNavigation, setValueNavigation] = useState('preparation')
+  const [valueNavigation, setValueNavigation] = useState('admin')
 
   const handleChangeNavigation = (event, newValue) => {
     setValueNavigation(newValue)
     if (newValue === 'exit') {
       logout()
       props.history.push('/')
-    } else if (newValue !== 'requests') {
-      props.history.push('/status')
     } else {
-      props.history.push('/request')
+      props.history.push('/admin')
     }
   }
 
@@ -204,6 +188,8 @@ const Index = function (props) {
                     .asMinutes()
                     .toFixed(0)}{' '}
                   Minutos
+                  <br />
+                  Valor total: R$ {request.total ? request.total.toFixed(2) : 0}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
@@ -211,21 +197,7 @@ const Index = function (props) {
               </Grid>
             </Grid>
           </CardContent>
-          <CardActions>
-            {request.status === 'PRONTO' && (
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                onClick={(e) => {
-                  changeOrderDeliver(index)
-                }}
-                className={classes.margin}
-              >
-                Marcar como ENTREGUE
-              </Button>
-            )}
-          </CardActions>
+          <CardActions></CardActions>
         </Card>
       </Grid>
     )
@@ -249,17 +221,10 @@ const Index = function (props) {
                 onChange={handleChangeNavigation}
               >
                 <BottomNavigationAction
-                  label="Fazer Pedido"
-                  value="requests"
+                  label="Admin"
+                  value="admin"
                   showLabel
                   icon={<AssignmentIcon />}
-                />
-
-                <BottomNavigationAction
-                  label="Verificar Preparação"
-                  value="preparation"
-                  showLabel
-                  icon={<AlarmIcon />}
                 />
 
                 <BottomNavigationAction
