@@ -176,14 +176,6 @@ const Index = function (props) {
   }
 
   const renderRequest = (request, index) => {
-    // request.status = 'FEITO'
-    //const classNameCard =
-    //  request.status === 'A FAZER'
-    //    ? 'request_card pending'
-    //    : request.status === 'FEITO'
-    //    ? 'request_card done'
-    //    : 'request_card making'
-
     return (
       <Grid item xs={12} md={6}>
         <Card variant="outlined" className={classes.margin}>

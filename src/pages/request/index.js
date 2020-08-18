@@ -4,8 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
-// import Input from '@material-ui/core/Input'
-// import InputLabel from '@material-ui/core/InputLabel'
 import TextField from '@material-ui/core/TextField'
 
 import BottomNavigation from '@material-ui/core/BottomNavigation'
@@ -19,18 +17,13 @@ import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import RestaurantIcon from '@material-ui/icons/Restaurant'
-// import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
-// import ThumbDown from '@material-ui/icons/ThumbDown'
-// import ThumbUp from '@material-ui/icons/ThumbUp'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 
-// import List from '@material-ui/core/List'
-// import ListItem from '@material-ui/core/ListItem'
-// import Divider from '@material-ui/core/Divider'
-// import ListItemText from '@material-ui/core/ListItemText'
-// import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-// import Avatar from '@material-ui/core/Avatar'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
 import firebase from '../../firebase'
 import './style.css'
@@ -118,6 +111,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#212121',
     cursor: 'pointer',
     //fontSize: '1em',
+  },
+  cursor: {
+    cursor: 'pointer',
   },
   relative: {
     position: 'relative',
@@ -274,7 +270,6 @@ const Index = function (props) {
         </Grid>
       </>
     )
-    // <Divider variant="fullWidth" component="li" />
   }
 
   const removeProductRequest = (index) => {
@@ -322,20 +317,27 @@ const Index = function (props) {
   const renderRequest = (productRequest, index) => {
     const product =
       products[productRequest.categorySelected][productRequest.productIndex]
-    //console.log(product, products, productRequest.productIndex)
-    //return
     return (
-      <li>
-        <span>{product.name}</span>
+      <ListItem>
+        <span>{product.name} </span>
 
         <span>
-          {product.type_itens.length ? renderTypeItens(product, index) : ''}
+          &nbsp;
+          {product.type_itens.length
+            ? renderTypeItens(product, index)
+            : ''}{' '}
         </span>
 
-        <span> R$ {product.price.toFixed(2)}</span>
+        <span>&nbsp; R$ {product.price.toFixed(2)}</span>
 
-        <section onClick={() => removeProductRequest(index)}> Remover</section>
-      </li>
+        <span
+          className={classes.cursor}
+          onClick={() => removeProductRequest(index)}
+        >
+          {' '}
+          <DeleteForeverIcon />
+        </span>
+      </ListItem>
     )
   }
 
@@ -530,9 +532,7 @@ const Index = function (props) {
                         {table && <span> Mesa: {table}</span>}{' '}
                       </Typography>
 
-                      <ul className="ul_request" key="request">
-                        {request.products.map(renderRequest)}
-                      </ul>
+                      <List>{request.products.map(renderRequest)}</List>
 
                       <div className="total">Total: R$ {total.toFixed(2)}</div>
                     </Paper>

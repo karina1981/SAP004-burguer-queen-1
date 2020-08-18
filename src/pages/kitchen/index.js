@@ -157,7 +157,7 @@ const Index = function (props) {
   const renderProduct = (product, index) => {
     return (
       <li key={index}>
-        {product.qtd} {product.name}
+        {product.qtd} {product.name} {product.item_selected}
       </li>
     )
   }
@@ -170,14 +170,6 @@ const Index = function (props) {
   }
 
   const renderRequest = (request, index) => {
-    // request.status = 'FEITO'
-    // const className =
-    //   request.status === 'A FAZER'
-    //     ? 'request_card pending'
-    //     : request.status === 'FEITO'
-    //     ? 'request_card done'
-    //     : 'request_card making'
-
     return (
       <Grid item xs={12} md={6}>
         <Card variant="outlined" className={classes.margin}>
