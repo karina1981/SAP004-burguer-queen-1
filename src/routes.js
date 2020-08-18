@@ -5,6 +5,7 @@ import Register from './pages/register'
 import Kitchen from './pages/kitchen'
 import Request from './pages/request'
 import Status from './pages/status'
+import Admin from './pages/admin'
 
 import { isAuthenticated } from './services/auth'
 
@@ -30,6 +31,7 @@ const Routes = () => {
         <PrivateRoute path="/kitchen" component={Kitchen} />
         <PrivateRoute path="/request" component={Request} />
         <PrivateRoute path="/status" component={Status} />
+        <PrivateRoute path="/admin" component={Admin} />
         <Route componete={() => <div>Página 404</div>} />
       </Switch>
     </BrowserRouter>

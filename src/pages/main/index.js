@@ -136,6 +136,8 @@ const Index = function (props) {
 
                 if (currentUser.sector === 'salao') {
                   props.history.push('/request')
+                } else if (currentUser.sector === 'admin') {
+                  props.history.push('/admin')
                 } else {
                   props.history.push('/kitchen')
                 }
@@ -237,77 +239,7 @@ const Index = function (props) {
             </Grid>
           </Grid>
         </Paper>
-        {/* <BottomNavigation
-          value={value}
-          onChange={handleChange}
-          className={classes.root}
-        >
-          <BottomNavigationAction
-            label="Recents"
-            value="recents"
-            icon={<RestoreIcon />}
-          />
-          <BottomNavigationAction
-            label="Favorites"
-            value="favorites"
-            icon={<FavoriteIcon />}
-          />
-          <BottomNavigationAction
-            label="Nearby"
-            value="nearby"
-            icon={<LocationOnIcon />}
-          />
-          <BottomNavigationAction
-            label="Folder"
-            value="folder"
-            icon={<FolderIcon />}
-          />
-        </BottomNavigation> */}
       </Grid>
-      {/* <Grid item xs={12}>
-        <Paper className={classes.paper} elevation={3}>
-          <Grid container>
-            <Grid iten xs={6}>
-              aaaa
-            </Grid>
-            <Grid iten xs={6}>
-              aaaaa
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid> */}
-
-      {/* <div className="header">
-          <img alt="" src={logo}></img>
-        </div>
-
-        <div className="middle">
-          <p className="p">Bem vindo CK Lover!</p>
-          <p className="p">
-            Entre com seu email e senha em Login
-            <br /> ou <br />
-            Registre um novo usuário!
-          </p>
-        </div>
-
-        <div className="buttons_menu">
-          <div className="content_menu">
-            <Link className="buttons bg-primary" to="/login">
-              Login
-            </Link>
-            <Link className="buttons bg-primary" to="/register">
-              Registre-se
-            </Link>
-          </div>
-        </div>
-
-        <div className="footer">
-          <p className="p">
-            Problemas com seu login?
-            <br />
-            Clique aqui!
-          </p>
-        </div> */}
     </>
   )
 }
