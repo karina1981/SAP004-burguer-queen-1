@@ -2,18 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
 
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import AlarmIcon from '@material-ui/icons/Alarm'
-import Typography from '@material-ui/core/Typography'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
+import CardRequest from '../../components/card-request'
 
 import firebase from '../../firebase'
 import './style.css'
@@ -159,14 +155,6 @@ const Index = function (props) {
     }
   })
 
-  const renderProduct = (product, index) => {
-    return (
-      <li key={index}>
-        {product.qtd} {product.name} {product.item_selected}
-      </li>
-    )
-  }
-
   const [valueNavigation, setValueNavigation] = useState('preparation')
 
   const handleChangeNavigation = (event, newValue) => {
@@ -179,56 +167,6 @@ const Index = function (props) {
     } else {
       props.history.push('/request')
     }
-  }
-
-  const renderRequest = (request, index) => {
-    return (
-      <Grid item xs={12} md={6}>
-        <Card variant="outlined" className={classes.margin}>
-          <CardContent>
-            <Grid container>
-              <Grid item xs={6}>
-                <Typography variant="h5" component="h2">
-                  Status: {request.status}
-                </Typography>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  Nome: {request.name} <br />
-                  Mesa: {request.table} <br />
-                  Data: {request.start_date.format('DD/MM/YYYY HH:mm:ss')}
-                  <br />
-                  Tempo na cozinha: {request.diff_date
-                    .asMinutes()
-                    .toFixed(0)}{' '}
-                  Minutos
-                </Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <ul>{request.products.map(renderProduct)}</ul>
-              </Grid>
-            </Grid>
-          </CardContent>
-          <CardActions>
-            {request.status === 'PRONTO' && (
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                onClick={(e) => {
-                  changeOrderDeliver(index)
-                }}
-                className={classes.margin}
-              >
-                Marcar como ENTREGUE
-              </Button>
-            )}
-          </CardActions>
-        </Card>
-      </Grid>
-    )
   }
 
   return (
@@ -272,7 +210,17 @@ const Index = function (props) {
             </Grid>
           </Grid>
           <Grid container alignItems="center" justify="center">
-            {requests.map(renderRequest)}
+            {requests.map((request, key) => {
+              return (
+                <CardRequest
+                  request={request}
+                  key={key}
+                  data-key={key}
+                  action={changeOrderDeliver}
+                  action-label="Entregue"
+                />
+              )
+            })}
           </Grid>
         </Paper>
       </Grid>
