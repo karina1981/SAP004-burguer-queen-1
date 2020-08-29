@@ -1,0 +1,96 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, 1fr);
+  max-width: 100%;
+  max-height: 100%;
+  grid-gap: 20px;
+}
+
+main div.header img {
+  width: 200px;
+}
+
+main .p {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  color: #1ffe5d;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0.4em;
+}
+
+main div.header {
+  display: grid;
+  grid-row: 2;
+  align-content: center;
+  justify-content: center;
+}
+
+.form_register {
+  display: grid;
+  grid-row: 3/12;
+}
+
+.div_inp.name {
+  display: grid;
+  grid-row: 3;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.div_inp.nick_name {
+  display: grid;
+  grid-row: 4;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.div_inp.email {
+  display: grid;
+  grid-row: 5;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.div_inp.password {
+  display: grid;
+  grid-row: 6;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.div_inp.k_r {
+  display: flex;
+  grid-row: 7;
+  margin: 20px 0 20px 0;
+}
+
+.div_inp.k_r :hover {
+  color: greenyellow;
+}
+
+.input:hover {
+  border-color: greenyellow;
+  background-color: greenyellow;
+}
+
+.div_error {
+  display: grid;
+  grid-row: 8;
+  margin: 0 auto;
+  color: #1ffe5d;
+}
+
+.dv_bt {
+  display: flex;
+  grid-row: 9;
+  margin: 0 auto;
+}
+
+.label {
+  margin: 10px;
+  text-align: initial;
+}

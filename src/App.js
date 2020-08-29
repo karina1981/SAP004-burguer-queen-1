@@ -1,38 +1,26 @@
-import React from 'react';
-import Background from './components/Background/Background.js';
-import './style.css';
-// import firebase from './firebase';
+import React from 'react'
+import './style.css'
+import Routes from './routes'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    maxWidth: '1048px',
+    margin: '0 auto',
+  },
+}))
 
 const App = () => {
+  const classes = useStyles()
   return (
-    <main>
-      <Background
-        idPrimary="button"
-        classNamePrimary="login"
-        namePrimary="Login"
-        idSecond="button"
-        classNameSecond="registro"
-        nameSecond="Registro"
-      />
-      <form>
-        <input
-          id="email"
-          type="email"
-          className="email"
-          placeholder="digite seu email"
-        />
-        Email
-        <input
-          id="password"
-          type="password"
-          minlength="6"
-          className="senha"
-          placeholder="minimo de 6 digitos"
-        />
-        Senha
-      </form>
-    </main>
-  );
-};
+    <div className={classes.root}>
+      <Grid container spacing={2}>
+        <Routes />
+      </Grid>
+    </div>
+  )
+}
 
-export default App;
+export default App

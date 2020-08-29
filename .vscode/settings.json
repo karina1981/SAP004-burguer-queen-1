@@ -1,0 +1,26 @@
+{
+  "editor.formatOnSave": true,
+  "terminal.integrated.fontSize": 14,
+  "editor.rulers": [80, 120],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    ".stylelintrc": "json",
+    ".prettierrc": "json"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "git.enableSmartCommit": true,
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "screencastMode.onlyKeyboardShortcuts": true,
+  "editor.tabSize": 2,
+  "editor.suggest.shareSuggestSelections": true,
+  "git.ignoreLimitWarning": true
+}

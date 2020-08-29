@@ -1,10 +1,10 @@
-import React from 'react';
-import background from './background.jpg';
-import './style.css';
+import React from 'react'
+import background from '../../imagens/background.jpg'
+import './style.css'
 
 const Background = (props) => (
   <div>
-    <img id="background" src={background} alt={'fundo imagem'}></img>
+    <img id="background" src={background} alt="fundo imagem"></img>
     <div>
       <button
         id={props.idPrimary}
@@ -33,6 +33,6 @@ const Background = (props) => (
       </p>
     </div>
   </div>
-);
+)
 
-export default Background;
+export default Background
