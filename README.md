@@ -1,4 +1,5 @@
-<img src="img_readme/lg.jpeg" alt="rascunho" width="100"/>
+
+<img align="right" src="img_readme/lg.jpeg">
 
 ## Índice
 
