@@ -17,24 +17,40 @@
 ---
 
 ## 1. Apresentação
-É uma interface feita em React para gerenciamento de forma ágil e clara entre o atendimento e a cozinha de um restaurante. A aplicação deste projeto você podea acessar através do link abaixo:
+É uma interface feita em React para gerenciamento de forma ágil e clara entre o atendimento e a cozinha de um restaurante. A aplicação deste projeto você pode acessar através do link abaixo:
 
 https://burguer-queen-26760.web.app/
 
+
+
 ## 2. Resumo do Projeto
 
-Uma burgueria que necessita de automatizar a conversa entre o pedido e a cozinha, algo que fique dinamico, a pessoa que anota o pedido quando terminar não necessita levar o pedito até a cozinha pois irá automaticamente via sistema o pedido para a cozinha, que quando finalizar o processo confima e uma vez confirmado o atentende pode anotar como entregue.
+<b>História de usuário 1</b><br>
+### Critérios de aceitação:
+<li>Criar Login e senha.</li><br>
+<li>Registar tipo de usuário (cozinha / salão), login e senha.</li><br>
+<li>Entrar na tela correta para cada usuário.</li><br>
 
-<b>Criamos uma interface que permite:</b>
 
-<li>Acessar via login a plataforma.</li><br>
-<li>Fazer o Registro escolhendo a tua posição de Cozinha, Atendimento ou Administrativo</li> <br>
-<li>Usuário com o perfil de Atendimento terá unicamente acesso aos pratos do dia e poder fazer os pedidos, e assim que estiver pronto dar como entregue.</li> <br>
-<li>Usuário da Cozinha recebe o pedido e assim que terminar dá como feito</li><br>
-<li>Usuário do Administrador tem acesso para vizualizar o andamento dos pedidos</li><br>
-<li>A plataforma esta de uma forma segura onde um usuário não consegue acessar os a interface do outro</li> <br>
-<li>Está de forma responsiva, e com tratativas de erros</li> <br>
+<b>História de usuário 2</b><br>
+### Critérios de aceitação:
+<li>O setor de atencimento anotar o nome e mesa.</li><br>
+<li>O setor de atencimento adicionar produtos aos pedidos.</li><br>
+<li>O setor de atendimento excluir produtos.</li><br>
+<li>O setor de atendimento ver resumo e o total da compra.</li><br>
+<li>O setor de atendimento enviar o pedido para a cozinha (guardar em algum banco de dados).</li><br>
+<li>O setor de atencimento funcionar bem e se adequar a um tablet</li><br>
 
+<b>História de usuário 3</b><br>
+### Critérios de aceitação:
+<li>O setor da cozinha ver os pedidos à medida em que são feitos.</li><br>
+<li>O setor da cozinha marcar os pedidos que foram preparados e estão prontos para serem servidos.</li><br>
+<li>O setor da cozinha ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.</li><br>
+
+<b>História de usuário 4</b><br>
+### Critérios de aceitação:
+<li>O setor do atendimento vê a lista de pedidos prontos para servir.</li><br>
+<li>O setor do Atendimento marque os pedidos que foram entregues.</li><br>
 ## 3. Planejamento
 
 <b>Trello</b>
@@ -63,7 +79,7 @@ Além de dar um corpo ao nosso esqueleto do Fluxograma
 
 
 ## 4. Teste de Usabilidade
-Durante a criação do projeto fizemos teste de usabilidade com os usuários. No teste, o principal erro foi a falta de um Adm para administrar tanto o atendimento quanto a cozinha. Assim corrimos os problemas apresentados e seguimos com nosso projeto
+Durante a criação do projeto fizemos teste de usabilidade com os usuários. No teste, o principal erro foi a falta de um Adm para administrar tanto o atendimento quanto a cozinha. Assim corrigimos os problemas apresentados e seguimos com nosso projeto
 
 ## 5. Autoria e Considerações Finais
 
