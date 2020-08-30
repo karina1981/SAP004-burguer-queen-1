@@ -26,12 +26,12 @@ https://burguer-queen-26760.web.app/
 
 ## 2. Resumo do Projeto "história do Usuário"
 
-##### História de usuário 1 critérios de aceitação:
+#### História de usuário 1 critérios de aceitação:
 * Criar Login e senha.
 * Registar tipo de usuário (cozinha / salão), login e senha.
 * Entrar na tela correta para cada usuário.
 
-### História de usuário 2Critérios de aceitação:
+#### História de usuário 2Critérios de aceitação:
 * O setor de atencimento anotar o nome e mesa.
 * O setor de atencimento adicionar produtos aos pedidos.
 * O setor de atendimento excluir produtos.
@@ -39,44 +39,49 @@ https://burguer-queen-26760.web.app/
 * O setor de atendimento enviar o pedido para a cozinha (guardar em algum banco de dados).
 * O setor de atencimento funcionar bem e se adequar a um tablet
 
-### História de usuário 3Critérios de aceitação:
+#### História de usuário 3Critérios de aceitação:
 * O setor da cozinha ver os pedidos à medida em que são feitos.
 * O setor da cozinha marcar os pedidos que foram preparados e estão prontos para serem servidos.
 * O setor da cozinha ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
 
-### História de usuário 4Critérios de aceitação:
+#### História de usuário 4Critérios de aceitação:
 * O setor do atendimento vê a lista de pedidos prontos para servir.
 * O setor do Atendimento marque os pedidos que foram entregues.
 
+---
+
 ## 3. Planejamento
 
-<b>Trello</b>
+**Trello** 
 Utilizamos a Ferramenta Trello para o planejamento, organização e acompanhamento das sprints, tinhamos alinhamentos todo o final do dia e trabalhamos em   pair programming optamos por usar o live share do visual code para facilitar esta interação, tivemos dailys diárias nos períodos do curso para saber onde cada uma estava e assim ambas estarem sempre lado a lado.
 Quando tinhasmos problemas ou estavamos travadas, uma procurava a outra e tenvamos nos ajudar para não perder muito tempo com bugs.
 
-<b>Trello</b>
+**Trello**
 
 <p align="center">
   <img heigth="500" width="500" src="img_readme/trello.jpeg">
 </p>
 
-<b>Fluxograma</b>
+**Fluxograma**
 Desenhamos o esqueleto da interface para ficar de melhor forma o planejamento, demos nossos primeiros passos utilizando nosso fluxograma como pode ver abaixo:
 <p align="center">
   <img heigth="500" width="500" src="img_readme/fluxograma.jpeg">
 </p>
 
 
-<b>Figma</b>
+**Figma**
 Nosso protótipo foi de grande valia neste projeto o Figma nos ajudou a, testar as usabilidades para ver ser haveria algo fora do local, o mais legal é que podemos mostrar para varios avaliadores para testar nossa interface.
 Além de dar um corpo ao nosso esqueleto do Fluxograma
 <p align="center">
   <img heigth="600" width="700" src="img_readme/figma.jpeg">
 </p>
 
+---
 
 ## 4. Teste de Usabilidade
 Durante a criação do projeto fizemos teste de usabilidade com os usuários. No teste, o principal erro foi a falta de um Adm para administrar tanto o atendimento quanto a cozinha. Assim corrigimos os problemas apresentados e seguimos com nosso projeto
+
+---
 
 ## 5. Autoria e Considerações Finais
 
