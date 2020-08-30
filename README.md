@@ -1,69 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="img_readme/lg.jpeg" alt="rascunho" width="100"/>
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [1. PokéFun](#1-pokéfun)
+- [2. História de Usuários](#2-historias-de-usuario)
+- [3. Desenho de Interface](#3-desenho-de-interface)
+- [4. Teste-de-Usabilidade](#4-teste-de-usabilidade)
+- [5. Autoria e Considerações Finais](#5-autoria-e-consideracoes-finais)
 
-### `yarn start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 1. PokéFun
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Pokémon GO é um jogo eletrônico free-to-play de realidade aumentada voltado para smartphones. O jogo é desenvolvido entre a Niantic, Inc., a Nintendo e a The Pokémon Company para as plataformas iOS e Android. O jogo foi lançado em 2016 e oferece uma experiência de se tornar um mestre Pokémon.<br>
+É possível caçar, evoluir, e batalhar com seus Pokémon.
+No projeto Data Lovers, misturamos referências do mundo Pokémon com o jogo.<br>
+Escolhemos Pokémon Go por ser um jogo mundialmente conhecido, sendo assim, poderiamos de certa forma contribuir com a experiência do usuário.
 
-### `yarn test`
+## 2. Histórias de Usuário
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Em nossa primeira pesquisa, selecionamos as principais necessidades do usuário. Entre elas, visualizar as fraquezas de cada Pokémon. <br>
+Percebemos algumas outras necessidades, como por exemplo, relembrar a série que deu origem ao jogo. Sendo assim, decidimos criar uma página que contém os links para todas as temporadas da série, a nossa Poké-TV.
 
-### `yarn build`
+<b>Criamos uma interface que permite:</b>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<li>Visualizar todos os Pokémon da Primeira Geração.</li><br>
+<li>Visualizar todas as informações importantes de um Pokémon, como seu tipo, fraqueza, quantidade de doces, entre outros.</li> <br>
+<li>Buscar um Pokémon por nome.</li> <br>
+<li>Ordenar os Pokémon por ordem alfabética.</li><br>
+<li>Visualizar quais Pokémon são de cada tipo.</li><br>
+<li>Encontrar os links para assistir todas as temporadas de Pokémon.</li> <br>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+A PokéFun contém duas páginas que estão em construção, a Eventos e Comunidade. Em Evento, o usuário poderá se informar sobre os eventos do jogo e em Comunidade poderão visualizar grupos de jogadores por todo mundo.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 3. Desenho de Interface
 
-### `yarn eject`
+<b>Protótipo de baixa fidelidade - Papel</b>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Primeiro, fizemos o protótio de baixa fidelidade, no papel. Nele, desenhamos as páginas que gostaríamos de fazer. Chegamos a conclusão que seria interessante ter uma Home, para informar o usuário sobre cada página. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  <img src="img_readme/rascunho1.jpeg" alt="rascunho" width="300"/>
+  <img src="img_readme/rascunho5.jpeg" alt="rascunho" width="300"/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ <b>Protótipo de média fidelidade - Photoshop</b>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Posteriormente, fizemos o teste de média fidelidade no Photoshop, já com a proposta de interface mais fiel a que gostaríamos de desenvolver. <br>
 
-## Learn More
+  <img src="img_readme/paginaprincipal.jpg" alt="protótipo" width="300"/>
+  <img src="img_readme/POKELIST.jpg" alt="protótipo" width="300"/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 4. Teste de Usabilidade
+Durante a criação do projeto fizemos teste de usabilidade com os usuários. No teste, o principal problema detectado foi a falta de um botão para voltar para a Home ou ir para as outras páginas. Assim, decidimos criar o menu hamburger. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 5. Autoria e Considerações Finais
+Esse projeto foi desenvolvido em dupla por Jessica Brunhara e Karina Pereira como parte do bootcamp < Laboratoria >. Foi um grande desafio que trouxe um grande aprendizado!
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
   
