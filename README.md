@@ -37,16 +37,17 @@ https://burguer-queen-26760.web.app/
 * O setor de atendimento excluir produtos.
 * O setor de atendimento ver resumo e o total da compra.
 * O setor de atendimento enviar o pedido para a cozinha (guardar em algum banco de dados).
-* O setor de atencimento funcionar bem e se adequar a um tablet<br>
+* O setor de atencimento funcionar bem e se adequar a um tablet
 
 ### História de usuário 3Critérios de aceitação:
-<li>O setor da cozinha ver os pedidos à medida em que são feitos.</li><br>
-<li>O setor da cozinha marcar os pedidos que foram preparados e estão prontos para serem servidos.</li><br>
-<li>O setor da cozinha ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.</li><br><br>
+* O setor da cozinha ver os pedidos à medida em que são feitos.
+* O setor da cozinha marcar os pedidos que foram preparados e estão prontos para serem servidos.
+* O setor da cozinha ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
 
 ### História de usuário 4Critérios de aceitação:
-<li>O setor do atendimento vê a lista de pedidos prontos para servir.</li><br>
-<li>O setor do Atendimento marque os pedidos que foram entregues.</li><br><br>
+* O setor do atendimento vê a lista de pedidos prontos para servir.
+* O setor do Atendimento marque os pedidos que foram entregues.
+
 ## 3. Planejamento
 
 <b>Trello</b>
