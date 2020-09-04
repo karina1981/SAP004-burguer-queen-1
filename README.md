@@ -104,7 +104,7 @@ Figma
 
 
 <b>Desenvolvido por:</b>
-Esse projeto foi desenvolvido em dupla por Carolina Mosqueta e Karina Pereira como parte do bootcamp < Laboratoria >. Foi um grande desafio que trouxe um grande aprendizado!
+Esse projeto foi desenvolvido em dupla por Carolina Moscheta e Karina Pereira como parte do bootcamp < Laboratoria >. Foi um grande desafio que trouxe um grande aprendizado!
 
 
 
